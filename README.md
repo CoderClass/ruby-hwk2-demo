@@ -1,3 +1,11 @@
+```
+Message
+- sender_id
+- recipient_id
+- subject
+- body
+```
+
 # Homework 2 - *Name of App*
 
 **Name of your app** is a Ruby on Rails blog application that allows users to send messages to each other that can only be read once.
