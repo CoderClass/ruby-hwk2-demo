@@ -1,0 +1,19 @@
+<h1>Users</h1>
+
+<table class="table table-striped">
+  <thead class="thead thead-inverse">
+    <tr>
+      <th>User</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user %></td>
+        <td><%= link_to "Add Friend", friendships_path(friend_id: user.id), method: 'post', class: 'btn btn-primary' %></td>
+      </tr>
+      <%=  %>
+    <% end %>
+  </tbody>
+</table>

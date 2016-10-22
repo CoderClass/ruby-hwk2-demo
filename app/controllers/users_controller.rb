@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
+  def index
+    @users = current_user.all_other_users
+  end
+
   def new
     @user = User.new
+  end
+
+  def show
+    @user = current_user
   end
 
   def create

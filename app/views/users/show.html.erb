@@ -1,0 +1,19 @@
+<h1>Profile</h1>
+
+<div class="card card-block">
+  Email: <%= @user.email %>
+</div>
+
+<h2>Friends</h2>
+<ul>
+  <% @user.friends.each do |friend| %>
+    <li><%= friend %></li>
+  <% end %>
+</ul>
+
+<h2>Followers</h2>
+<ul>
+  <% @user.followers.each do |follower| %>
+    <li><%= follower %></li>
+  <% end %>
+</ul>

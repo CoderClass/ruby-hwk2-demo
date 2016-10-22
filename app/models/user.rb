@@ -2,6 +2,11 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: {case_sensitive: false}
   has_secure_password
 
+  has_many :friendships
+  has_many :friends, through: :friendships
+  has_many :followings, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :followers, class_name: 'User', through: :followings, source: :user
+
   def incoming_messages
     Message.where(recipient_id: id).order('created_at DESC')
   end
