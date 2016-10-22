@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :friendships
+
   get 'messages/incoming'
 
   resources :messages do
     collection do
       get 'incoming'
+      get 'sent'
     end
 
     member do

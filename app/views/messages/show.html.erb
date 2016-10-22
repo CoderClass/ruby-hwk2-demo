@@ -1,0 +1,19 @@
+<h1>Message</h1>
+
+<% if @message.read? %>
+  <div class="alert alert-info">Message was read at <%= @message.read_at.to_s(:long) %>.</div>
+<% end %>
+<div class="card">
+  <div class="card-header">
+    From: <%= @message.sender %><br>
+    To: <%= @message.recipient %>
+  </div>
+  <div class="card-block">
+    <%= @message.subject %>
+  </div>
+
+  <div class="card-footer">
+    <%= @message.body %>
+  </div>
+</div>
+

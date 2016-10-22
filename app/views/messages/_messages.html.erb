@@ -1,0 +1,28 @@
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+      <th>Subject</th>
+      <th>Time</th>
+      <th>Read at</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% messages.each do |message| %>
+      <tr class="<%= message_class(message) %>">
+        <td><%= message.sender %></td>
+        <td><%= message.recipient %></td>
+        <td>
+          <% if message.unread? %>
+            <span class="tag tag-info">NEW</span>
+          <% end %>
+          <%= link_to message.subject, message %>
+        </td>
+        <td><%= time_ago_in_words message.created_at %></td>
+        <td><%= time_ago_in_words(message.read_at) if message.read_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
