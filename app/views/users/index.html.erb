@@ -5,13 +5,25 @@
     <tr>
       <th>User</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
       <tr>
         <td><%= user %></td>
-        <td><%= link_to "Add Friend", friendships_path(friend_id: user.id), method: 'post', class: 'btn btn-primary' %></td>
+        <td>
+          <% if friendship = current_user.find_friendship_with(user) %>
+            Added by you <%= time_ago_in_words friendship.created_at %> ago.
+          <% else %>
+            <%= link_to "Add Friend", friendships_path(friend_id: user.id), method: 'post', class: 'btn btn-primary' %>
+          <% end %>
+        </td>
+        <td>
+          <% if friendship = user.find_friendship_with(current_user) %>
+            Added you <%= time_ago_in_words friendship.created_at %> ago.
+          <% end %>
+        </td>
       </tr>
       <%=  %>
     <% end %>

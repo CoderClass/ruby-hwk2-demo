@@ -6,7 +6,7 @@ class FriendshipsController < ApplicationController
     else
       flash[:error] = "Unable to add #{friendship.friend} as friend."
     end
-    redirect_to root_url
+    redirect_to users_path
   end
 
   def destroy

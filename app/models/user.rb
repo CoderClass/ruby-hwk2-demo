@@ -22,4 +22,8 @@ class User < ApplicationRecord
   def all_other_users
     User.where.not(id: id)
   end
+
+  def find_friendship_with(friend)
+    friendships.where(friend: friend).first
+  end
 end
