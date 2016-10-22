@@ -1,0 +1,21 @@
+<% content_for :content do %>
+  <div class="row" style="margin-top:20px">
+    <div class="col-sm-3">
+      <div class="list-group">
+        <%= list_item_li_to friendships_path do %>
+          Friends
+          <span class="tag tag-default tag-pill float-xs-right"><%= current_user.friends.size %></span>
+        <% end %>
+        <%= list_item_li_to followings_path do %>
+          Followers
+          <span class="tag tag-default tag-pill float-xs-right"><%= current_user.followers.size %></span>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <%= yield %>
+    </div>
+  </div>
+<% end %>
+
+<%= render file: 'layouts/application' %>

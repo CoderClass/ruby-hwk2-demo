@@ -1,4 +1,6 @@
 class FriendshipsController < ApplicationController
+  layout 'users'
+
   def create
     friendship = current_user.friendships.build friend_id: params[:friend_id]
     if friendship.save
@@ -14,5 +16,9 @@ class FriendshipsController < ApplicationController
     friendship.destroy
     flash[:success] = "Removed friendship with #{friendship.friend}."
     redirect_to root_url
+  end
+
+  def index
+    @friendships = current_user.friendships
   end
 end

@@ -14,6 +14,7 @@ module ApplicationHelper
   def li_link_to(title, path, options = {})
     options[:class] ||= ''
     options[:class] << ' nav-link'
+    options[:class] << ' active' if current_page?(path)
     content_tag(:li, class: 'nav-item') do
       link_to title, path, options
     end
