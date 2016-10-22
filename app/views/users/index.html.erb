@@ -1,31 +1,28 @@
 <h1>Users</h1>
 
-<table class="table table-striped">
-  <thead class="thead thead-inverse">
-    <tr>
-      <th>User</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user %></td>
-        <td>
-          <% if friendship = current_user.find_friendship_with(user) %>
-            Added by you <%= time_ago_in_words friendship.created_at %> ago.
-          <% else %>
-            <%= link_to "Add Friend", friendships_path(friend_id: user.id), method: 'post', class: 'btn btn-primary' %>
-          <% end %>
-        </td>
-        <td>
-          <% if friendship = user.find_friendship_with(current_user) %>
-            Added you <%= time_ago_in_words friendship.created_at %> ago.
-          <% end %>
-        </td>
-      </tr>
-      <%=  %>
-    <% end %>
-  </tbody>
-</table>
+<div class="card-columns" style="font-size: 0.8em; text-align: center">
+  <% @users.each do |user| %>
+    <div class="card">
+      <div style="margin-top: 20px">
+      <%= image_tag user.thumbnail_url || 'http://placehold.it/128?text=?' %>
+      </div>
+      <div class="card-block">
+        <div class="card-title"><%= user.name %></div>
+        <%= user.email %>
+      </div>
+      <div class="card-footer">
+        <% if friendship = current_user.find_friendship_with(user) %>
+          Added by you <%= time_ago_in_words friendship.created_at %> ago.
+          <%= link_to "Remove", friendship, method: 'delete', class: 'btn btn-danger btn-sm' %>
+        <% else %>
+          <%= link_to "Add Friend", friendships_path(friend_id: user.id), method: 'post', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+      <% if friendship = user.find_friendship_with(current_user) %>
+        <div class="card-footer">
+          Added you <%= time_ago_in_words friendship.created_at %> ago.
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

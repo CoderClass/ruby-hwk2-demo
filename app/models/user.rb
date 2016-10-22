@@ -26,4 +26,16 @@ class User < ApplicationRecord
   def find_friendship_with(friend)
     friendships.where(friend: friend).first
   end
+
+  def self.generate_users(n)
+    response = open("https://randomuser.me/api/?results=#{n}").read
+    results = JSON.parse(response)['results']
+
+    results.each do |json|
+      User.create(email: json["email"],
+                  name: json["name"]["first"] + ' ' + json["name"]["last"],
+                  thumbnail_url: json["picture"]["large"],
+                  password: 'asdfasdf')
+    end
+  end
 end
