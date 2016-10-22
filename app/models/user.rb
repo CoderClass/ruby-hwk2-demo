@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def incoming_messages
-    Message.where(recipient_id: id)
+    Message.where(recipient_id: id).order('created_at DESC')
   end
 
   def to_s
