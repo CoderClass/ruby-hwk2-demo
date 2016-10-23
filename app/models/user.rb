@@ -42,4 +42,8 @@ class User < ApplicationRecord
   def non_friends
     User.where.not(id: friend_ids)
   end
+
+  def contact_info
+    "#{name} <#{email}>"
+  end
 end
