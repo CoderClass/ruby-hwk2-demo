@@ -8,7 +8,9 @@
       </div>
       <div class="card-block">
         <div class="card-title"><%= user.name %></div>
-        <%= user.email %>
+        <div style="word-break: break-word">
+          <%= user.email %>
+        </div>
       </div>
       <div class="card-footer">
         <% if friendship = current_user.find_friendship_with(user) %>

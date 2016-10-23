@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = current_user.all_other_users
+    @users = current_user.all_other_users.order("name")
   end
 
   def new
