@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @message = Message.find params[:id]
+    @message = Message.where(recipient: current_user).find params[:id]
     if @message.unread?
       @message.mark_as_read!
     else

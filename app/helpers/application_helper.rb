@@ -26,4 +26,8 @@ module ApplicationHelper
       content_tag(:button, 'x'.html_safe, class: 'close', data: {dismiss: 'alert'}) + message
     end
   end
+
+  def markdown(text)
+    Kramdown::Document.new(text).to_html.html_safe
+  end
 end

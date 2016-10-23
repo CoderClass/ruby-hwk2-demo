@@ -22,8 +22,8 @@
         </ul>
         <ul class="nav navbar-nav float-xs-right">
           <% if current_user %>
-            <%= li_link_to "Profile", user_path(:current) %>
-            <%= li_link_to "Log out #{current_user.email}", logout_path, method: 'delete' %>
+            <%= li_link_to "Profile #{current_user}", user_path(:current) %>
+            <%= li_link_to "Log out", logout_path, method: 'delete' %>
           <% end %>
         </ul>
       </nav>

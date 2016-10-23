@@ -16,4 +16,10 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path, flash: {success: "Please log in first"}
     end
   end
+
+  def require_no_user!
+    if current_user
+      redirect_to new_session_path, flash: {success: "You are already logged in."}
+    end
+  end
 end

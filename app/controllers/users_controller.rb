@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    render layout: 'application'
   end
 
   def show
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
      # OPTIONAL: email the user
      redirect_to root_path
    else
-     render 'new'
+     render 'new', layout: 'application'
    end
   end
 
