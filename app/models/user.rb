@@ -40,7 +40,7 @@ class User < ApplicationRecord
   end
 
   def non_friends
-    User.where.not(id: friend_ids)
+    User.where.not(id: friend_ids + [id])
   end
 
   def contact_info
