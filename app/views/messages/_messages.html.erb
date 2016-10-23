@@ -12,8 +12,8 @@
   <tbody>
     <% messages.each do |message| %>
       <tr class="<%= message_class(message) %>">
-        <td><%= message.sender %></td>
-        <td><%= message.recipient %></td>
+        <td><%= display_user_or_me(message.sender) %></td>
+        <td><%= display_user_or_me(message.recipient) %></td>
         <td>
           <% if message.unread? %>
             <span class="tag tag-info">NEW</span>
