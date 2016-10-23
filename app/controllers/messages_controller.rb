@@ -28,6 +28,8 @@ class MessagesController < ApplicationController
     @message = Message.find params[:id]
     if @message.unread?
       @message.mark_as_read!
+    else
+      redirect_to :back, flash: {error: "Nope! Message has already been read."}
     end
   end
 
