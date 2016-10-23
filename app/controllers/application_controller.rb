@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def require_user!
     unless current_user
-      redirect_to new_session_path, flash: {success: "Please log in first"}
+      redirect_to sign_in_path, flash: {success: "Please log in first"}
     end
   end
 

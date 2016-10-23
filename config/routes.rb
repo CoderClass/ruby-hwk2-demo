@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'sign_up' => 'users#new'
+  get 'sign_in' => 'sessions#new'
+
   resources :friendships
   resources :followings
 
