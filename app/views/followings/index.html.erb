@@ -1,5 +1,7 @@
 <h1>Followers</h1>
 
 <div class="card-columns" style="font-size: 0.8em; text-align: center">
-  <%= render @followings %>
+  <% @followings.each do |following| %>
+    <%= render 'friendships/friendship', friendship: following, user: following.user %>
+  <% end %>
 </div>

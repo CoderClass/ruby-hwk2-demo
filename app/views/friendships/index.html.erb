@@ -1,5 +1,7 @@
 <h1>Friends</h1>
 
 <div class="card-columns" style="font-size: 0.8em; text-align: center">
-  <%= render @friendships %>
+  <% @friendships.each do |friendship| %>
+    <%= render 'friendship', friendship: friendship, user: friendship.friend %>
+  <% end %>
 </div>

@@ -1,4 +1,3 @@
-<%- user = friendship.user %>
 <div class="card">
   <div style="margin-top: 20px">
   <%= image_tag user.thumbnail_url || 'http://placehold.it/128?text=?' %>
@@ -12,12 +11,7 @@
       Added by you <%= time_ago_in_words friendship.created_at %> ago.
       <%= link_to "Remove", friendship, method: 'delete', class: 'btn btn-danger btn-sm' %>
     <% else %>
-      <%= link_to "Add Friend", friendships_path(friend_id: user.id), method: 'post', class: 'btn btn-primary' %>
-    <% end %>
-  </div>
-  <% if friendship.friend == current_user %>
-    <div class="card-footer">
       Added you <%= time_ago_in_words friendship.created_at %> ago.
-    </div>
   <% end %>
+  </div>
 </div>
